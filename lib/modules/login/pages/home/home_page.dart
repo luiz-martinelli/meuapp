@@ -19,7 +19,9 @@ class HomePage extends StatelessWidget {
               bottom: 14,
               left: 26,
               right: 26,
-              child: AppBottomNavigator(),
+              child: AppBottomNavigator(
+                currentIndex: 0,
+              ),
             )
           ],
         ));
