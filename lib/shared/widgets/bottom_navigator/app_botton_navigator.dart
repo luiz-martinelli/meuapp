@@ -5,9 +5,11 @@ import 'package:meuapp/shared/theme/app_theme.dart';
 
 class AppBottomNavigator extends StatelessWidget {
   final int currentIndex;
+  final ValueChanged<int> onChanged;
   const AppBottomNavigator({
     Key? key,
     required this.currentIndex,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -23,55 +25,61 @@ class AppBottomNavigator extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Icon(
-                Icons.home,
-                color: currentIndex == 0
-                    ? AppTheme.Colors.textEnabled
-                    : AppTheme.Colors.iconInactive,
-              ),
-              decoration: BoxDecoration(
-                color: currentIndex == 0
-                    ? AppTheme.Colors.primary
-                    : AppTheme.Colors.background,
-                borderRadius: BorderRadius.circular(12),
-              ),
+            IconBottomNavigator(
+              icon: Icons.home,
+              onTap: () {
+                onChanged(0);
+              },
+              enabled: currentIndex == 0,
             ),
-            Container(
-              width: 40,
-              height: 40,
-              child: Icon(
-                Icons.add,
-                color: currentIndex == 1
-                    ? AppTheme.Colors.textEnabled
-                    : AppTheme.Colors.iconInactive,
-              ),
-              decoration: BoxDecoration(
-                color: currentIndex == 1
-                    ? AppTheme.Colors.primary
-                    : AppTheme.Colors.background,
-                borderRadius: BorderRadius.circular(12),
-              ),
+            IconBottomNavigator(
+              icon: Icons.add,
+              onTap: () {
+                onChanged(1);
+              },
+              enabled: currentIndex == 1,
             ),
-            Container(
-              width: 40,
-              height: 40,
-              child: Icon(
-                Icons.settings,
-                color: currentIndex == 2
-                    ? AppTheme.Colors.textEnabled
-                    : AppTheme.Colors.iconInactive,
-              ),
-              decoration: BoxDecoration(
-                color: currentIndex == 2
-                    ? AppTheme.Colors.primary
-                    : AppTheme.Colors.background,
-                borderRadius: BorderRadius.circular(12),
-              ),
+            IconBottomNavigator(
+              icon: Icons.settings,
+              onTap: () {
+                onChanged(2);
+              },
+              enabled: currentIndex == 2,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class IconBottomNavigator extends StatelessWidget {
+  final Function() onTap;
+  final bool enabled;
+  final IconData icon;
+  const IconBottomNavigator({
+    Key? key,
+    required this.onTap,
+    required this.enabled,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: 40,
+        height: 40,
+        child: Icon(
+          icon,
+          color: enabled
+              ? AppTheme.Colors.textEnabled
+              : AppTheme.Colors.iconInactive,
+        ),
+        decoration: BoxDecoration(
+          color: enabled ? AppTheme.Colors.primary : AppTheme.Colors.background,
+          borderRadius: BorderRadius.circular(12),
         ),
       ),
     );
