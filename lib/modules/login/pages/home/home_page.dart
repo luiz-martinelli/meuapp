@@ -26,6 +26,32 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppTheme.Colors.background,
         body: Stack(
           children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppTheme.Colors.textEnabled,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ListTile(
+                    leading: const CircleAvatar(
+                      radius: 30,
+                      child: Text("12/12"),
+                    ),
+                    title: const Text("Produto"),
+                    subtitle: const Text("Preço"),
+                    trailing: PopupMenuButton(
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          child: Text("Editar"),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
             Positioned(
               bottom: 14,
               left: 26,
