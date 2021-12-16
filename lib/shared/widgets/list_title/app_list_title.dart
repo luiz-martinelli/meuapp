@@ -8,31 +8,34 @@ class AppListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.Colors.textEnabled,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: AppTheme.Colors.background,
-          radius: 30,
-          child: const Text(
-            "12/12",
-            style: TextStyle(color: Colors.black),
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppTheme.Colors.textEnabled,
+          borderRadius: BorderRadius.circular(12),
         ),
-        title: const Text("Produto"),
-        subtitle: const Text("Preço"),
-        trailing: PopupMenuButton(
-          itemBuilder: (context) => [
-            const PopupMenuItem(
-              child: Text("Editar"),
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundColor: AppTheme.Colors.background,
+            radius: 30,
+            child: const Text(
+              "12/12",
+              style: TextStyle(color: Colors.black),
             ),
-            const PopupMenuItem(
-              child: Text("Excluir"),
-            )
-          ],
+          ),
+          title: const Text("Produto"),
+          subtitle: const Text("Preço"),
+          trailing: PopupMenuButton(
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                child: Text("Editar"),
+              ),
+              const PopupMenuItem(
+                child: Text("Excluir"),
+              )
+            ],
+          ),
         ),
       ),
     );

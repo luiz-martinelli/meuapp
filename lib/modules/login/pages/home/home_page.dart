@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meuapp/shared/theme/app_theme.dart';
 import 'package:meuapp/shared/widgets/bottom_navigator/app_botton_navigator.dart';
+import 'package:meuapp/shared/widgets/card_product/card_product.dart';
 import 'package:meuapp/shared/widgets/list_title/app_list_title.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,30 +24,34 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Scaffold(
-          backgroundColor: AppTheme.Colors.background,
-          body: Stack(
-            children: [
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    AppListTitle(),
-                    AppListTitle(),
-                    AppListTitle(),
-                  ]),
-              Positioned(
-                bottom: 14,
-                left: 26,
-                right: 26,
-                child: AppBottomNavigator(
-                  currentIndex: currentIndex,
-                  onChanged: changeIndex,
-                ),
-              )
-            ],
-          )),
+    return Scaffold(
+      backgroundColor: AppTheme.Colors.background,
+      body: Stack(
+        children: [
+          Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 126,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => const CardProduct(),
+              ),
+            ),
+            const AppListTitle(),
+            const AppListTitle(),
+            const AppListTitle(),
+          ]),
+          Positioned(
+            bottom: 14,
+            left: 26,
+            right: 26,
+            child: AppBottomNavigator(
+              currentIndex: currentIndex,
+              onChanged: changeIndex,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
