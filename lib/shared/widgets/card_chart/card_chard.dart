@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:meuapp/shared/theme/app_theme.dart';
+import 'package:meuapp/shared/widgets/chart_horizontal/chart_horizontal.dart';
 
 class CardChart extends StatelessWidget {
   final double value;
@@ -31,15 +32,20 @@ class CardChart extends StatelessWidget {
             ),
             Text.rich(
               TextSpan(
-                  text: "R\$",
-                  style: AppTheme.textStyles.label,
-                  children: [
-                    TextSpan(
-                      text: value.toStringAsFixed(2).replaceAll(".", ","),
-                      style: AppTheme.textStyles.title.copyWith(fontSize: 36),
-                    )
-                  ]),
-            )
+                text: "R\$",
+                style: AppTheme.textStyles.label,
+                children: [
+                  TextSpan(
+                    text: value.toStringAsFixed(2).replaceAll(".", ","),
+                    style: AppTheme.textStyles.title.copyWith(fontSize: 36),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const ChartHorizontal()
           ],
         ),
       ),
