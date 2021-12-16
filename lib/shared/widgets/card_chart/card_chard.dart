@@ -20,18 +20,28 @@ class CardChart extends StatelessWidget {
           10,
         ),
       ),
-      child: Column(
-        children: [
-          Text("Gasto mensal").label,
-          Text.rich(
-            TextSpan(text: "R\$", style: AppTheme.textStyles.label, children: [
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Gasto mensal").label,
+            const SizedBox(
+              height: 18,
+            ),
+            Text.rich(
               TextSpan(
-                text: value.toStringAsFixed(2).replaceAll(".", ","),
-                style: AppTheme.textStyles.title.copyWith(fontSize: 36),
-              )
-            ]),
-          )
-        ],
+                  text: "R\$",
+                  style: AppTheme.textStyles.label,
+                  children: [
+                    TextSpan(
+                      text: value.toStringAsFixed(2).replaceAll(".", ","),
+                      style: AppTheme.textStyles.title.copyWith(fontSize: 36),
+                    )
+                  ]),
+            )
+          ],
+        ),
       ),
     );
   }
