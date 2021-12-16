@@ -53,68 +53,70 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: AppTheme.Colors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Form(
-          key: controller.formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/images/logo.png",
-                width: 200,
-              ),
-              InputText(
-                label: "E-mail",
-                hint: "Digite seu e-mail",
-                validator: (value) =>
-                    isEmail(value) ? null : "Digite um email válido",
-                onChanged: (value) => controller.onChage(email: value),
-              ),
-              const SizedBox(
-                height: 18,
-              ),
-              InputText(
-                label: "Senha",
-                obscure: true,
-                hint: "Digite sua senha",
-                onChanged: (value) => controller.onChage(password: value),
-                validator: (value) =>
-                    value.length >= 6 ? null : "Digite uma senha válida",
-              ),
-              const SizedBox(
-                height: 14,
-              ),
-              AnimatedBuilder(
-                animation: controller,
-                builder: (_, __) {
-                  return controller.state.when(
-                    loading: () => const CircularProgressIndicator(),
-                    orElse: () => Column(
-                      children: [
-                        Button(
-                          label: "Entrar",
-                          onTap: () {
-                            controller.login();
-                          },
-                        ),
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        Button(
-                          label: "Criar conta",
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              "/login/create-account",
-                            );
-                          },
-                          type: ButtonType.outline,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ],
+        child: SingleChildScrollView(
+          child: Form(
+            key: controller.formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/logo.png",
+                  width: 200,
+                ),
+                InputText(
+                  label: "E-mail",
+                  hint: "Digite seu e-mail",
+                  validator: (value) =>
+                      isEmail(value) ? null : "Digite um email válido",
+                  onChanged: (value) => controller.onChage(email: value),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                InputText(
+                  label: "Senha",
+                  obscure: true,
+                  hint: "Digite sua senha",
+                  onChanged: (value) => controller.onChage(password: value),
+                  validator: (value) =>
+                      value.length >= 6 ? null : "Digite uma senha válida",
+                ),
+                const SizedBox(
+                  height: 14,
+                ),
+                AnimatedBuilder(
+                  animation: controller,
+                  builder: (_, __) {
+                    return controller.state.when(
+                      loading: () => const CircularProgressIndicator(),
+                      orElse: () => Column(
+                        children: [
+                          Button(
+                            label: "Entrar",
+                            onTap: () {
+                              controller.login();
+                            },
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          Button(
+                            label: "Criar conta",
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                "/login/create-account",
+                              );
+                            },
+                            type: ButtonType.outline,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

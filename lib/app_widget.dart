@@ -10,15 +10,16 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter race",
       theme: ThemeData(primarySwatch: Colors.green),
-      initialRoute: "/home",
+      initialRoute: "/splash",
       routes: {
         "/splash": (context) => const Splashpage(),
         "/login": (context) => const LoginPage(),
         "/login/create-account": (context) => const CreateAccountPage(),
         "/home": (context) => const HomePage(),
-        // user: ModalRoute.of(context)!.settings.arguments as UserModel
+        //user: ModalRoute.of(context)!.settings.arguments as UserModel
       },
     );
   }
