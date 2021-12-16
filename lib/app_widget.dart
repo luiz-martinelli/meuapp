@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter race",
       theme: ThemeData(primarySwatch: Colors.green),
-      initialRoute: "/splash",
+      initialRoute: "/home",
       routes: {
         "/splash": (context) => const Splashpage(),
         "/login": (context) => const LoginPage(),

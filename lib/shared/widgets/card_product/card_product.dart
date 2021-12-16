@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:meuapp/shared/theme/app_theme.dart';
 
 class CardProduct extends StatelessWidget {
-  const CardProduct({Key? key}) : super(key: key);
+  final bool like;
+  const CardProduct({
+    Key? key,
+    required this.like,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,12 @@ class CardProduct extends StatelessWidget {
               leading: CircleAvatar(
                 backgroundColor: AppTheme.Colors.background,
                 radius: 30,
-                child: const Icon(Icons.linked_camera_sharp),
+                child: like
+                    ? const Icon(FontAwesomeIcons.thumbsUp)
+                    : Icon(
+                        FontAwesomeIcons.thumbsDown,
+                        color: AppTheme.Colors.badColor,
+                      ),
               ),
               title: Text(
                 "Produto",
