@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:meuapp/shared/theme/app_theme.dart';
 
 class AppBottomNavigator extends StatelessWidget {
