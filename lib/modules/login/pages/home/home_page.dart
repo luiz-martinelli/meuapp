@@ -29,31 +29,46 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppTheme.Colors.background,
       body: Stack(
         children: [
-          Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: CardChart(
-                value: 365,
-                percent: 1,
-              ),
-            ),
-            const SizedBox(
-              height: 27,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 126,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => CardProduct(
-                  like: index % 2 == 0,
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const CardChart(
+                        value: 365,
+                        percent: 1,
+                      ),
+                      const SizedBox(
+                        height: 27,
+                      ),
+                      const Text("Preço dos produtos").label,
+                      const SizedBox(
+                        height: 14,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            const AppListTitle(),
-            const AppListTitle(),
-            const AppListTitle(),
-          ]),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 126,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => CardProduct(
+                      like: index % 2 == 0,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                const AppListTitle(),
+                const AppListTitle(),
+                const AppListTitle(),
+              ]),
           Positioned(
             bottom: 14,
             left: 26,
