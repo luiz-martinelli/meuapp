@@ -27,58 +27,77 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.Colors.background,
-      body: Stack(
-        children: [
-          Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          children: [
+            SafeArea(
+              top: true,
+              child: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CardChart(
-                        value: 365,
-                        percent: 1,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const CardChart(
+                              value: 365,
+                              percent: 1,
+                            ),
+                            const SizedBox(
+                              height: 27,
+                            ),
+                            const Text("Preço dos produtos").label,
+                            const SizedBox(
+                              height: 14,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 126,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => CardProduct(
+                            like: index % 2 == 0,
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 27,
                       ),
-                      const Text("Preço dos produtos").label,
-                      const SizedBox(
-                        height: 14,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 126,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => CardProduct(
-                      like: index % 2 == 0,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 27,
-                ),
-                const AppListTitle(),
-                const AppListTitle(),
-                const AppListTitle(),
-              ]),
-          Positioned(
-            bottom: 14,
-            left: 26,
-            right: 26,
-            child: AppBottomNavigator(
-              currentIndex: currentIndex,
-              onChanged: changeIndex,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Suas últimas compras").label,
+                            const SizedBox(
+                              height: 14,
+                            ),
+                            const AppListTitle(),
+                            const AppListTitle(),
+                          ],
+                        ),
+                      )
+                    ]),
+              ),
             ),
-          )
-        ],
+            Positioned(
+              bottom: 14,
+              left: 26,
+              right: 26,
+              child: AppBottomNavigator(
+                currentIndex: currentIndex,
+                onChanged: changeIndex,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
