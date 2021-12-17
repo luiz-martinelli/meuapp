@@ -5,9 +5,11 @@ import 'package:meuapp/shared/widgets/chart_horizontal/chart_horizontal.dart';
 
 class CardChart extends StatelessWidget {
   final double value;
+  final double percent;
   const CardChart({
     Key? key,
     required this.value,
+    required this.percent,
   }) : super(key: key);
 
   @override
@@ -45,7 +47,9 @@ class CardChart extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const ChartHorizontal()
+            ChartHorizontal(
+              percent: percent,
+            )
           ],
         ),
       ),

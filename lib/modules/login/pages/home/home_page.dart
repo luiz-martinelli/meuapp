@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: CardChart(
                 value: 365,
+                percent: 1,
               ),
             ),
             const SizedBox(
